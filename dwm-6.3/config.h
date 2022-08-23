@@ -37,8 +37,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class          instance    title       tags mask     isfloating   monitor */
-	{ "qBittorrent",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "Pavucontrol",  NULL,       NULL,       0,            1,           -1 },
+	{ "Galculator",   NULL,       NULL,       0,            1,           -1 },
+	{ "qBittorrent",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "librewolf",    NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "discord",      NULL,       NULL,       1 << 2,       0,           -1 },
 };
@@ -117,6 +118,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_n,						spawn,         SHCMD("pcmanfm &") },
 //spawn pulseaudio volume control
 	{ MODKEY|ShiftMask, XK_m,						spawn,         SHCMD("pavucontrol &") },
+//spawn galculator
+	{ MODKEY|ShiftMask, XK_g,						spawn,         SHCMD("galculator &") },
 //Volume Function Keys (controls)
 	{ 0,				XF86XK_AudioMute,			spawn,         SHCMD("pamixer -t &") },
 	{ 0,				XF86XK_AudioLowerVolume,    spawn,         SHCMD("pamixer -d 5 &") },
