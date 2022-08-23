@@ -1,5 +1,4 @@
 /* See LICENSE file for copyright and license details. */
-//the quick brown fox jumped over the lazy dog
 /*
  * appearance
  *
