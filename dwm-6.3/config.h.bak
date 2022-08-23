@@ -10,7 +10,7 @@
 #define XF86XK_TouchpadToggle     0x1008FFA9   /* Toggle between touchpad/trackstick */
 
 /* appearance */
-static const unsigned int borderpx  = 4;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -74,21 +74,22 @@ static const char *termcmd[]  = { "st", NULL };
 /* keys */
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_r,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	/*{ MODKEY,                       XK_Return, zoom,           {0} },*/
+	{ MODKEY,                       XK_p,	   zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,						XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -104,10 +105,14 @@ static Key keys[] = {
 	{ 0,				XK_Print,	spawn,		   SHCMD("scrot -o /tmp/image.png && xclip -selection clipboard -t image/png -i /tmp/image.png &") },
 // take a selection screenshot with the mod + shift + s button
 	{ MODKEY|ShiftMask,	XK_s,       spawn,         SHCMD("scrot -s -f -o /tmp/image.png && xclip -selection clipboard -t image/png -i /tmp/image.png &") },
-// spawn chromium on MOD + W
+// spawn librewolf  on MOD + W
     { MODKEY,           XK_w,						spawn,         SHCMD("librewolf &") },
-// spawn PcmanFM
-	{ MODKEY,           XK_n,						spawn,         SHCMD("pcmanfm &") },
+// spawn  emoji selection in dmenu
+    { MODKEY|ShiftMask, XK_d,						spawn,         SHCMD("emoji &") },
+// spawn ranger
+	{ MODKEY,           XK_n,						spawn,         SHCMD("st -e ranger &") },
+// spawn pcmanfm
+	{ MODKEY|ShiftMask,	XK_n,						spawn,         SHCMD("pcmanfm &") },
 //spawn pulseaudio volume control
 	{ MODKEY|ShiftMask, XK_m,						spawn,         SHCMD("pavucontrol &") },
 //Volume Function Keys (controls)
