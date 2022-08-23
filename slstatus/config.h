@@ -66,7 +66,7 @@ static const char unknown_str[] = "";
 static const struct arg args[] = {
 	/* function format          argument */
 	{ cpu_perc,			"| CPU %3s%% ",		NULL						},
-    { ram_perc,			"| RAM %2s%% ",		NULL						},
+    { ram_used,			"| %s ",		NULL						},
     { battery_state,	"| 🔋 %s",			"BAT1"						},
     { battery_perc,		"%s%% ",			"BAT1"						},
 	{ run_command,		"| 🔊 %s ",			"pamixer --get-volume-human"},
