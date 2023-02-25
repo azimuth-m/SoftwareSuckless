@@ -36,10 +36,11 @@ static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
+		xprop to check window class (WM_CLASS)
 	 */
 
     /* class			instance	title			tags mask	isfloating  isterminal	noswallow	monitor */
-    { "librewolf",		NULL,		NULL,		    1 << 1,		0,          0,			0,			-1 },
+    { "LibreWolf",		NULL,		NULL,		    1 << 1,		0,          0,			0,			-1 },
     { "discord",		NULL,       NULL,			1 << 2,		0,          0,			0,			-1 },
 	{ "qBittorrent",	NULL,       NULL,			1 << 8,		0,          0,			0,			-1 },
 
@@ -120,6 +121,8 @@ static Key keys[] = {
     { MODKEY,           XK_w,						spawn,         SHCMD("librewolf &") },
 // spawn  emoji selection in dmenu
     { MODKEY|ShiftMask, XK_d,						spawn,         SHCMD("emoji &") },
+// bash history in dmnu
+    { MODKEY|ShiftMask, XK_h,						spawn,         SHCMD("bash_history_dmenu &") },
 // spawn ranger
 	{ MODKEY,           XK_n,						spawn,         SHCMD("st -e ranger &") },
 // spawn pcmanfm
