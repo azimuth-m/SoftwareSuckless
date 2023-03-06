@@ -1,32 +1,34 @@
 /* See LICENSE file for copyright and license details. */
-#define XF86XK_MonBrightnessUp    0x1008FF02  /* Monitor/panel brightness */
-#define XF86XK_MonBrightnessDown  0x1008FF03  /* Monitor/panel brightness */
-#define XF86XK_AudioLowerVolume	  0x1008FF11   /* Volume control down        */
-#define XF86XK_AudioMute          0x1008FF12   /* Mute sound from the system */
-#define XF86XK_AudioRaiseVolume   0x1008FF13   /* Volume control up          */
-#define XF86XK_AudioPlay          0x1008FF14   /* Start playing of audio >   */
-#define XF86XK_AudioPrev          0x1008FF16   /* Previous track             */
-#define XF86XK_AudioNext          0x1008FF17   /* Next track                 */
-#define XF86XK_TouchpadToggle     0x1008FFA9   /* Toggle between touchpad/trackstick */
+#define XF86XK_MonBrightnessUp   	0x1008FF02  /* Monitor/panel brightness */
+#define XF86XK_MonBrightnessDown 	0x1008FF03  /* Monitor/panel brightness */
+#define XF86XK_AudioLowerVolume	 	0x1008FF11   /* Volume control down        */
+#define XF86XK_AudioMute         	0x1008FF12   /* Mute sound from the system */
+#define XF86XK_AudioRaiseVolume  	0x1008FF13   /* Volume control up          */
+#define XF86XK_AudioPlay         	0x1008FF14   /* Start playing of audio >   */
+#define XF86XK_AudioPrev         	0x1008FF16   /* Previous track             */
+#define XF86XK_AudioNext         	0x1008FF17   /* Next track                 */
+#define XF86XK_TouchpadToggle    	0x1008FFA9   /* Toggle between touchpad/trackstick */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int snap      = 322;       /* snap pixel */
+static const unsigned int borderpx	= 2;        /* border pixel of windows */
+static const unsigned int snap		= 322;       /* snap pixel */
 static const int swallowfloating	= 1;        /* 1  means swallow floating windows by default */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "SourceCodePro:size=12:style=Medium", "NotoColorEmoji:size=12"};
-static const char dmenufont[]       = { "SourceCodePro:size=12:style=Medium"};
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_orange[]        = "#ff2f00";
-//static const char col_cyan[]        = "#005577";
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_orange,  col_orange  },
+static const int showbar		= 1;        /* 0 means no bar */
+static const int topbar			= 1;        /* 0 means bottom bar */
+static const char *fonts[]		= { "SourceCodePro:size=12:style=Medium", "NotoColorEmoji:size=12"};
+static const char dmenufont[]		= { "SourceCodePro:size=12:style=Medium"};
+static const char col_gray1[]		= "#444444";
+static const char col_gray2[]		= "#999999";
+static const char col_gray3[]		= "#eeeeee";
+static const char col_gray4[]		= "#ffffff";
+static const char col_skyblue[]		= "#76a5af";
+//static const char col_orange[]		= "#ff2f00";
+//static const char col_cyan[]		= "#005577";
+
+static const char *colors[][3]		= {
+	/*               fg			bg			border   */
+	[SchemeNorm] = { col_gray3,		col_gray1,		col_gray2	},
+	[SchemeSel]  = { col_gray4,		col_skyblue,		col_skyblue	},
 };
 
 /* tagging */
@@ -39,25 +41,22 @@ static const Rule rules[] = {
 		xprop to check window class (WM_CLASS)
 	 */
 
-    /* class			instance	title			tags mask	isfloating  isterminal	noswallow	monitor */
-    { "LibreWolf",		NULL,		NULL,		    1 << 1,		0,          0,			0,			-1 },
-    { "discord",		NULL,       NULL,			1 << 2,		0,          0,			0,			-1 },
-	{ "qBittorrent",	NULL,       NULL,			1 << 8,		0,          0,			0,			-1 },
-
-	{ "Galculator",		NULL,       NULL,			0,			1,          0,			0,		    -1 },
-	{ "Pavucontrol",	NULL,       NULL,			0,			1,          0,			0,		    -1 },
-
-    { "st",	NULL,		NULL,			0,			0,          1,			0,			-1 },
-    { NULL,				NULL,		"Event Tester", 0,			0,          0,			1,			-1 }, /* xev */
-
+    /* class			instance	title		tags mask	isfloating  isterminal	noswallow	monitor */
+	{ "LibreWolf",		NULL,		NULL,		1 << 1,		0,          0,		0,		-1 },
+	{ "discord",		NULL,		NULL,		1 << 2,		0,          0,		0,		-1 },
+	{ "qBittorrent",	NULL,		NULL,		1 << 8,		0,          0,		0,		-1 },
+	{ "Galculator",		NULL,		NULL,		0,		1,          0,		0,		-1 },
+	{ "Pavucontrol",	NULL,		NULL,		0,		1,          0,		0,		-1 },
+	{ "st",			NULL,		NULL,		0,		0,          1,		0,		-1 },
+	{ NULL,			NULL,		"Event Tester", 0,		0,          0,		1,		-1 }, /* xev */
 };
 
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const float mfact	= 0.55; /* factor of master area size [0.05..0.95] */
+static const int nmaster	= 1;    /* number of clients in master area */
+static const int resizehints	= 1;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen	= 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -80,62 +79,57 @@ static const Layout layouts[] = {
 /* custom */
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_orange, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static char		dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char	*dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_skyblue, "-sf", col_gray4, NULL };
+static const char	*termcmd[]  = { "st", NULL };
 /* keys */
 static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_r,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_p,	   zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,						XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	/* modifier                     key				function        argument */
+	{ MODKEY,                       XK_d,				spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_Return,			spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_b,				togglebar,      {0} },
+	{ MODKEY,                       XK_j,				focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,				focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_i,				incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_r,				incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_h,				setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_l,				setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_p,				zoom,           {0} },
+	{ MODKEY,                       XK_Tab,				view,           {0} },
+	{ MODKEY,			XK_q,				killclient,     {0} },
+	{ MODKEY,                       XK_t,				setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_f,				setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_m,				setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,             XK_f,				fullscreen,     {0} },
+	{ MODKEY,                       XK_space,			setlayout,      {0} },
+	{ MODKEY|ShiftMask,             XK_space,			togglefloating, {0} },
+	{ MODKEY,                       XK_0,				view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,				tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_comma,			focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period,			focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,			tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period,			tagmon,         {.i = +1 } },
+	{ MODKEY,			XK_w,				spawn,		SHCMD("librewolf &") },
+	{ MODKEY|ShiftMask,		XK_d,				spawn,		SHCMD("emoji &") },
+	{ MODKEY|ShiftMask,		XK_h,				spawn,		SHCMD("bash_history_dmenu &") },
+	{ MODKEY,			XK_n,				spawn,		SHCMD("st -e ranger &") },
+	{ MODKEY|ShiftMask,		XK_n,				spawn,		SHCMD("pcmanfm &") },
+	{ MODKEY|ShiftMask,		XK_m,				spawn,		SHCMD("pavucontrol &") },
+	{ MODKEY|ShiftMask, 		XK_g,				spawn,		SHCMD("galculator &") },
+
+//Volume Function Keys (controls)
+	{ 0,				XF86XK_AudioMute,		spawn,         SHCMD("pamixer -t &") },
+	{ 0,				XF86XK_AudioLowerVolume,	spawn,         SHCMD("pamixer -d 5 &") },
+	{ 0,				XF86XK_AudioRaiseVolume,	spawn,         SHCMD("pamixer -i 5 &") },
 
 // take a screenshot with the mod + print button and save it in ~/Pictures/screenshots
-	{ MODKEY,			XK_Print,	spawn,		   SHCMD("scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' ") },
-// take a screenshot with the print button
-	{ 0,				XK_Print,	spawn,		   SHCMD("scrot -o /tmp/image.png && xclip -selection clipboard -t image/png -i /tmp/image.png &") },
-// take a selection screenshot with the mod + shift + s button
-	{ MODKEY|ShiftMask,	XK_s,       spawn,         SHCMD("scrot -s -f -o /tmp/image.png && xclip -selection clipboard -t image/png -i /tmp/image.png &") },
-// spawn librewolf  on MOD + W
-    { MODKEY,           XK_w,						spawn,         SHCMD("librewolf &") },
-// spawn  emoji selection in dmenu
-    { MODKEY|ShiftMask, XK_d,						spawn,         SHCMD("emoji &") },
-// bash history in dmnu
-    { MODKEY|ShiftMask, XK_h,						spawn,         SHCMD("bash_history_dmenu &") },
-// spawn ranger
-	{ MODKEY,           XK_n,						spawn,         SHCMD("st -e ranger &") },
-// spawn pcmanfm
-	{ MODKEY|ShiftMask,	XK_n,						spawn,         SHCMD("pcmanfm &") },
-//spawn pulseaudio volume control
-	{ MODKEY|ShiftMask, XK_m,						spawn,         SHCMD("pavucontrol &") },
-//spawn galculator
-	{ MODKEY|ShiftMask, XK_g,						spawn,         SHCMD("galculator &") },
-//Volume Function Keys (controls)
-	{ 0,				XF86XK_AudioMute,			spawn,         SHCMD("pamixer -t &") },
-	{ 0,				XF86XK_AudioLowerVolume,    spawn,         SHCMD("pamixer -d 5 &") },
-	{ 0,				XF86XK_AudioRaiseVolume,    spawn,         SHCMD("pamixer -i 5 &") },
+	{ MODKEY,			XK_Print,			spawn,		SHCMD("scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' ") },
 
+// take a screenshot with the print button
+	{ 0,				XK_Print,			spawn,		SHCMD("scrot -o /tmp/image.png && xclip -selection clipboard -t image/png -i /tmp/image.png &") },
+
+// take a selection screenshot with the mod + shift + s			button
+	{ MODKEY|ShiftMask,		XK_s,				spawn,		SHCMD("scrot -s -f -o /tmp/image.png && xclip -selection clipboard -t image/png -i /tmp/image.png &") },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -146,7 +140,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+
+	{ MODKEY|ShiftMask,             XK_q,				quit,           {0} },
 };
 
 /* button definitions */
@@ -165,4 +160,5 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
+
 

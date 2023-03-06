@@ -106,7 +106,7 @@ static const char *colorname[] = {
   [3] = "#c1951a", /* yellow  */
   [4] = "#425387", /* blue    */
   [5] = "#965d98", /* magenta */
-  [6] = "#fa2f00", /* orange  */
+  [6] = "#5e848c", /* skyblue  */
  // [6] = "#06989a", /* cyan    */
   [7] = "#d3d7cf", /* white   */
 
@@ -117,7 +117,8 @@ static const char *colorname[] = {
   [11] = "#d5a30e", /* yellow  */
   [12] = "#667acc", /* blue    */
   [13] = "#893c8c", /* magenta */
-  [14] = "#ff2f00", /* orange  */
+  //[14] = "#ff2f00", /* orange  */
+  [14] = "#76a5af", /* skyblue  */
   //[14] = "#12bccb", /* cyan    */
   [15] = "#eeeeec", /* white   */
 
@@ -184,14 +185,14 @@ static uint forcemousemod = ShiftMask;
  * Beware that overloading Button1 will disable the selection.
  */
 static MouseShortcut mshortcuts[] = {
-	/* mask                 button   function        argument       release */
-	{ ShiftMask,           Button4, kscrollup,      {.i = 1} },
-	{ ShiftMask,           Button5, kscrolldown,    {.i = 1} },
-	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
-	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
-	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
-	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
-	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
+	/* mask                 button			function			argument					release */
+	{ ShiftMask,			Button4,		kscrollup,			{.i = 1} },
+	{ ShiftMask,			Button5,		kscrolldown,		{.i = 1} },
+	{ XK_ANY_MOD,           Button2,		selpaste,			{.i = 0},      1 },
+	{ ShiftMask,            Button4,		ttysend,			{.s = "\033[5;2~"} },
+	{ XK_ANY_MOD,           Button4,		ttysend,			{.s = "\031"} },
+	{ ShiftMask,            Button5,		ttysend,			{.s = "\033[6;2~"} },
+	{ XK_ANY_MOD,           Button5,		ttysend,			{.s = "\005"} },
 };
 
 /* Internal keyboard shortcuts. */
