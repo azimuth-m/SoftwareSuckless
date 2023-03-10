@@ -50,6 +50,7 @@
 //#include <X11/XF86keysym.h>
 
 #include "drw.h"
+#include "brightness.h"
 #include "util.h"
 
 /* macros */
@@ -153,6 +154,7 @@ typedef struct {
 	int monitor;
 } Rule;
 
+
 /* function declarations */
 static void applyrules(Client *c);
 static int applysizehints(Client *c, int *x, int *y, int *w, int *h, int interact);
@@ -253,6 +255,12 @@ static int isdescprocess(pid_t p, pid_t c);
 static Client *swallowingclient(Window w);
 static Client *termforwin(const Client *c);
 static pid_t winpid(Window w);
+
+const unsigned short int max_brightness = 4882; /* usually 4882 */
+unsigned short int cur_brightness = 4882;
+
+const char *max_b_path = "/sys/class/backlight/intel_backlight/max_brightness";
+const char *b_path = "/sys/class/backlight/intel_backlight/brightness";
 
 /* variables */
 static const char broken[] = "broken";

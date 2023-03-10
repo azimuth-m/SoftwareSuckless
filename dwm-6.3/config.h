@@ -122,6 +122,9 @@ static Key keys[] = {
 	{ 0,				XF86XK_AudioLowerVolume,	spawn,         SHCMD("pamixer -d 5 &") },
 	{ 0,				XF86XK_AudioRaiseVolume,	spawn,         SHCMD("pamixer -i 5 &") },
 
+	{ 0,				XF86XK_MonBrightnessUp,	inc_brightness,          {0}},
+	{ 0,				XF86XK_MonBrightnessDown,	dec_brightness,          {0}},
+
 // take a screenshot with the mod + print button and save it in ~/Pictures/screenshots
 	{ MODKEY,			XK_Print,			spawn,		SHCMD("scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' ") },
 
