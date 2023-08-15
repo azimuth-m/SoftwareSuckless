@@ -11,12 +11,14 @@
 
 /* appearance */
 static const unsigned int borderpx	= 2;        /* border pixel of windows */
+static const int startwithgaps	        = 0;	    /* 1 means gaps are used by default */
+static const unsigned int gappx         = 2;       /* default gap between windows in pixels */
 static const unsigned int snap		= 10;       /* snap pixel */
 static const int swallowfloating	= 1;        /* 1  means swallow floating windows by default */
 static const int showbar		= 1;        /* 0 means no bar */
 static const int topbar			= 1;        /* 0 means bottom bar */
-static const char *fonts[]		= { "SourceCodePro:size=12:style=Medium", "NotoColorEmoji:size=12"};
-static const char dmenufont[]		= { "SourceCodePro:size=12:style=Medium"};
+static const char *fonts[]		= { "SourceCodePro:size=11:style=Medium", "NotoColorEmoji:size=12"};
+static const char dmenufont[]		= { "SourceCodePro:size=11:style=Medium"};
 static const char col_gray1[]		= "#444444";
 static const char col_gray2[]		= "#999999";
 static const char col_gray3[]		= "#eeeeee";
@@ -54,7 +56,7 @@ static const Rule rules[] = {
 
 
 /* layout(s) */
-static const float mfact	= 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact	= 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster	= 1;    /* number of clients in master area */
 static const int resizehints	= 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen	= 1; /* 1 will force focus on the fullscreen window */
@@ -110,6 +112,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period,			focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,			tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period,			tagmon,         {.i = +1 } },
+        { MODKEY,                       XK_minus,                       setgaps,        {.i = -2 } },
+	{ MODKEY,                       XK_equal,                       setgaps,        {.i = +2 } },
+	{ MODKEY|ShiftMask,             XK_minus,                       setgaps,        {.i = GAP_RESET } },
+	{ MODKEY|ShiftMask,             XK_equal,                       setgaps,        {.i = GAP_TOGGLE} },
 	{ MODKEY,			XK_w,				spawn,		SHCMD("librewolf &") },
 	{ MODKEY|ShiftMask,		XK_d,				spawn,		SHCMD("emoji &") },
 	{ MODKEY|ShiftMask,		XK_h,				spawn,		SHCMD("bash_history_dmenu &") },
@@ -117,6 +123,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_n,				spawn,		SHCMD("pcmanfm &") },
 	{ MODKEY|ShiftMask,		XK_m,				spawn,		SHCMD("pavucontrol &") },
 	{ MODKEY|ShiftMask, 		XK_g,				spawn,		SHCMD("galculator &") },
+	{ MODKEY|ShiftMask, 		XK_l,				spawn,		SHCMD("xsecurelock") },
 
 //Volume Function Keys (controls)
 	{ 0,				XF86XK_AudioMute,		spawn,         SHCMD("pamixer -t &") },
